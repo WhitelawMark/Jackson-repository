@@ -1,0 +1,69 @@
+C:\Users\10217\Desktop\coolSrc\prj\Debug\BrowseInfo\rt-thread[5.0.1]\components\dfs\filesystems\uffs\storage\nor\dfs_uffs.pbi: \
+  C:\Users\10217\Desktop\coolSrc\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\storage\nor\dfs_uffs.c \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\include\rtthread.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\app\rtconfig.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\include\rtdef.h \
+  D:\IAR\arm\inc\c\stdint.h D:\IAR\arm\inc\c\ycheck.h \
+  D:\IAR\arm\inc\c\yvals.h D:\IAR\arm\inc\c\DLib_Defaults.h \
+  D:\IAR\arm\inc\c\DLib_Config_Full.h D:\IAR\arm\inc\c\DLib_Product.h \
+  D:\IAR\arm\inc\c\stddef.h D:\IAR\arm\inc\c\ysizet.h \
+  D:\IAR\arm\inc\c\stdarg.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\extension\sys\types.h \
+  D:\IAR\arm\inc\c\time.h D:\IAR\arm\inc\c\time64.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\include\rtservice.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\include\rtm.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\include\rtatomic.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\include\rthw.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\finsh\finsh.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\bsp\drivers\mx25uxx.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v1\include\dfs_fs.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v1\include\dfs.h \
+  D:\IAR\arm\inc\c\stdio.h D:\IAR\arm\inc\c\stdlib.h \
+  D:\IAR\arm\inc\c\DLib_Product_stdlib.h D:\IAR\arm\inc\c\string.h \
+  D:\IAR\arm\inc\c\DLib_Product_string.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\include\dirent.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\extension\fcntl\octal\fcntl.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\extension\sys\stat.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\include\sys\time.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\include\sys\statfs.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\rtdevice.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\ipc\ringbuffer.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\ipc\completion.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\ipc\dataqueue.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\ipc\workqueue.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\ipc\waitqueue.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\ipc\pipe.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\ipc\poll.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\ipc\ringblk_buf.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\drivers\rtc.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\drivers\alarm.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\drivers\serial.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\drivers\i2c.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\drivers\i2c_dev.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\drivers\i2c-bit-ops.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\drivers\pin.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\drivers\adc.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\drivers\pm.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\drivers\include\drivers\lptimer.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\extension\sys\errno.h \
+  D:\IAR\arm\inc\c\errno.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v1\include\dfs_file.h \
+  C:\Users\10217\Desktop\coolSrc\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\storage\nor\dfs_uffs.h \
+  C:\Users\10217\Desktop\coolSrc\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\storage\nor\uffs_config.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_public.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_types.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_core.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_pool.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_os.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_device.h \
+  C:\Users\10217\Desktop\coolSrc\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\storage\nor\uffs_config.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_buf.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_tree.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_blockinfo.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_mem.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_flash.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_fs.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_fd.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_mtb.h \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc\uffs\uffs_utils.h

@@ -1,0 +1,10 @@
+WIN32:
+python-2.7.15.msi
+pycrypto-2.6.win32-py2.7
+
+WIN64:
+python-2.7.15.amd64.msi
+pycrypto-2.6.1.win-amd64-py2.7.exe
+
+
+需要安装python2.7 才能编译通过

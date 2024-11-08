@@ -1,0 +1,32 @@
+[
+ {
+  "path": "/packages/iot/netutils", 
+  "ver": "v1.2.0", 
+  "name": "NETUTILS"
+ }, 
+ {
+  "path": "/packages/system/syswatch", 
+  "ver": "latest", 
+  "name": "SYSWATCH"
+ }, 
+ {
+  "path": "/packages/peripherals/i2c-tools", 
+  "ver": "latest", 
+  "name": "I2C_TOOLS"
+ }, 
+ {
+  "path": "/packages/misc/libcsv", 
+  "ver": "v3.0.3", 
+  "name": "LIBCSV"
+ }, 
+ {
+  "path": "/packages/misc/optparse", 
+  "ver": "v1.0.0", 
+  "name": "OPTPARSE"
+ }, 
+ {
+  "path": "/packages/misc/samples/network_samples", 
+  "ver": "v0.3.0", 
+  "name": "NETWORK_SAMPLES"
+ }
+]

@@ -1,0 +1,1593 @@
+
+
+
+https://github.com/RT-Thread/rt-thread/tree/master
+1:目录概览
+$PROJ_DIR$\..\bsp\drivers\
+$PROJ_DIR$\..\bsp\drivers\include
+$PROJ_DIR$\..\bsp\drivers\config
+$PROJ_DIR$\..\bsp\drivers
+$PROJ_DIR$\..\bsp\libraries\CMSIS
+$PROJ_DIR$\..\bsp\libraries\CMSIS\Include
+$PROJ_DIR$\..\bsp\libraries\CMSIS\Device\ST\STM32U5xx\Include
+$PROJ_DIR$\..\bsp\libraries\STM32U5xx_HAL_Driver\Inc
+$PROJ_DIR$\..\os\rt-thread5.0.1\include\
+$PROJ_DIR$\..\os\rt-thread5.0.1\include\libc
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\cplusplus
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\drivers\include\
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\drivers\include\drivers
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\drivers\include\ipc
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\finsh
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\libc\compilers\dlib
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\libc\compilers\newlib\sys
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\libc\compilers\common
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\libc\compilers\common\extension
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\libc\compilers\common\include
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\libc\compilers\common\extension\fcntl\octal
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\libc\posix\io\poll
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\utilities\ulog 
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\utilities\utest
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\utilities\ymodem
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\dfs\dfs_v1\include
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\dfs\dfs_v1\filesystems\devfs
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\src\inc
+$PROJ_DIR$\..\os\rt-thread5.0.1\components\dfs\dfs_v0\filesystems\uffs\storage\nor
+$PROJ_DIR$\..\app\oam
+$PROJ_DIR$\..\app\oam\comm
+$PROJ_DIR$\..\app\hci
+$PROJ_DIR$\..\app\hci\inc
+$PROJ_DIR$\..\app\public\inc
+$PROJ_DIR$\..\app\bg77\inc
+$PROJ_DIR$\..\app\business\
+$PROJ_DIR$\..\app\system\inc
+$PROJ_DIR$\..\app\oam\json
+$PROJ_DIR$\..\app\comm
+$PROJ_DIR$\..\app\hci\msh
+$PROJ_DIR$\..\app\
+$PROJ_DIR$\..\ 
+$PROJ_DIR$\..\packages\packages\syswatch-latest\inc
+$PROJ_DIR$\..\packages\packages\cJSON-v1.0.2
+$PROJ_DIR$\..\packages\packages\quick_led-latest\inc
+$PROJ_DIR$\..\packages\packages\easyblink-v2.0.1
+
+
+Intretech\YQ21902
+rong236236@
+
+2：开发板硬件连接
+
+AT cmd port:uart1 tx:7 rx:6 cts:5 rts:4 baudrate:115200
+module_name: ESP32C2-4MB
+
+ESP8684          跟MCU（开发板）                        公司板子
+通讯串口 AT        LPUART1
+ rx GPIO6 ----   A4 PC1      LPUART1_TX                            UART2_TX  PA2    LPUART1_TX
+ tx gpio7-----   A5 PC0      LPUART1_RX                            UART2_RX  PA3    LPUART1_RX
+ GND             GND                                     GND
+
+
+公司板子： PA12  ESP8684_EN  拉高WIFI模块工作           ESP8684 gpio9 低  gpio8 高进入下载模式  gpio9 高  gpio8 高进入SPIboot模式 
+
+
+ ESP32C2-4MB ESP8684调试串口 下载功能
+ GPIO19, U0RXD
+GPIO20, U0TXD
+
+bg77              跟MCU（开发板）              公司板子              手册
+通讯AT串口          USART2                     UART4
+ TXD3V    -----   PD6 RX                      UART4_TX    PA0       UART4_TX？           
+ rxd3v    -----   pd5 tx                      UART4_RX    PA1       UART4_RX？
+ gnd ----         gnd                         gnd
+
+
+调试打印串口                           公司板子
+MCU  PA10   RX      USART1_RX(boot)                   一样
+MCU  PA9    TX      USART1_TX(boot)  
+
+
+
+
+VCC_3V_EN  PB4  控制3v供电 比如WIFI 供电
+BA77_POWER_CONTROL 控制BG77供电  PA15
+RESET_N_BG77       控制BG77复位  PB6             
+PWRKEY_BG77        控制BG77 启动 休眠按键   PB7
+
+ADC1_IN9_BATTERY   PA4 电池电压检测   ADC1_IN9 ADC1 通道9  也是ADC4_IN9 通道9
+
+I2C2_SCL PB13  I2C2_SDA PB14  6轴传感器 I2C2     INT1  PB12  INT2 PB15   SD0 PA8
+
+
+
+
+
+
+ 3:启动LOG 交接时
+ CopyRight @ YQ BootLoader
+Software version: V1.2.3
+Created time    : Dec 12 2023, 09:52:10
+Flash ID        : 18ef
+FLASH_BANK_SIZE : 0X100000
+321
+   [uboot-info]: Jump to the application
+
+ \ | /
+- RT -     Thread Operating System
+ / | \     5.0.1 build Nov 29 2023 14:52:17
+ 2006 - 2022 Copyright by RT-Thread team
+app_gpio_init.
+[874] D/drv.rtc: rtc init success
+board: W25QXX init pass.
+[886] D/bg77: BG77 module restart...
+AT+CFUN=1,1
+OK[894] D/esp: ESP-AT module restart...
+[899]AT+RST
+
+OK I/syswatch: create syswatch thread success.
+[909] I/syswatch: system watch startup successfully
+[915] I/utest: utest is initialize success.
+[920] I/utest: total utest testcase num: (7)
+[929] D/adc: channel=9 the voltage is :425
+[954] D/adc: channel=TEMPER the voltage is :183.642136
+[1004] D/adc: channel=CH_VREF the voltage is :1203
+[1054] D/adc: channel=CH_VBAT the voltage is :826
+
+ready
+AT+RST
+
+OK[2909] D/esp: ESP-AT module restart OK!
+[6354] D/bg77: BG77 module restart OK!
+[7273] I/misc: env: dfs_mount_init, successful
+[7309] D/misc: AIRPLANE_MOD:  0
+[7312] D/misc: WORK_MODE:  0
+[7315] D/misc: GPS_MODE:  0
+[7318] D/misc: GPS_CYCLE:  0
+[7321] D/misc: GPS_PERIOD:  0
+[7324] D/misc: GYR_MODE:  0
+[7327] D/misc: GYR_PERIOD:  0
+[7330] D/misc: ELEFEN_OFFON:  0
+[7333] D/misc: ELEFEN_OFFON:  0
+****************************************************************
+CopyRight @yq  Biotechnology Co.,Ltd
+UBOOT    Version : V1.2.3
+Hardware Type    :  DOGC
+Hardware Version : V1000
+Software Version : V1002
+Compile     Time : 23/11/29 14/52/23
+Cpuid            : 4F0024594E501220363736
+****************************************************************
+msh />AT+RST
+
+OK
+ready
+AT
+OKATE1
+OKAT+QICSGP=1,1,"CMNBIOT","","",1
+OKAT+QIACT=1
+OKAT+QCCID
++QCCID: 898604961622C0093905
+
+OKAT+GSN
+864486061888786
+
+OKAT+GMM
+BG77
+
+OKAT+CSQ
++CSQ: 99,99
+
+OKAT+RST
+
+OKAT
+
+OKATE0
+
+OK
+OK
+ready
+AT+SYSMSG=7
+
+OKAT+GMR
+AT version:3.3.0.0-dev(da9d43f - ESP32C2 - Nov 30 2023 08:34:00)
+SDK version:v5.0.4-dirty
+compile time(a274a2c5):Dec 12 2023 11:56:41
+Bin version:v4.0.0.0-dev(ESP32C2-4MB)
+
+OKAT+CWMODE=0
+
+OKAT+BLEINIT=2
+
+OKAT+BLEADDR?
++BLEADDR:"08:3a:8d:48:82:46"
+OKAT+BLEADVPARAM=50,50,0,0,7,0,,
+
+OKAT+BLEADVDATA="02010606094447353030030302A0"
+
+OKAT+BLESECPARAM=1,0,16,3,3
+
+OKAT+BLESETKEY=123456
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+OKAT+BLEADVSTART
+
+
+
+OKAT
+OKATE1
+OKAT+QICSGP=1,1,"CMNBIOT","","",1
+OKAT+QIACT=1
+ERRORAT+QIACT=1
+" execute failE/bg77: Command: "AT+QIACT=1
+
+[419741] E/bg77: BG77 configure fail
+
+
+4:SWD接口
+其中VTref就是VCC接口。即：VCC-1；SWDIO-7；SWCLK-9；GND-20。
+5：JTAG
+TCK： Test Clock，必选接口，具有一个内部弱下拉电阻。TCK 为 TAP 的操作提供了一个独立的、基本的时钟信号，TAP 的所有操作都是通过这个时钟信号来驱动的。
+TMS： Test Mode Select，必选接口，具有内部弱上拉电阻。TMS 信号用来控制 TAP 状态机的转换，在 TCK 的上升沿有效。通过 TMS 信号，可以控制 TAP 在不同的状态间相互转换。
+TDI： Test Data-In，必选接口，具有内部弱上拉电阻。TDI 是数据输入的接口。所有要输入到特定寄存器的数据都是通过 TDI 接口一位一位串行输入的（由 TCK 驱动）。
+TDO： Test Data-out，必选接口，TDO 是数据输出的接口。所有要从特定的寄存器中输出的数据都是通过 TDO 接口一位一位串行输出的（由 TCK 驱动）。
+TRST： Test Reset（可选），具有内部弱上拉电阻。TRST 可以用来对 TAP Controller 进行复位（初始化）。因为 TRST 是可选的，所以有四线 JTAG 与五线 JTAG 之分。
+
+IEEE-1149.7 标准定义的 compact JTAG（cJTAG）则减少了引脚数，只定义了 2 个引脚，可以采用星形拓扑结构连接：
+
+TMSC： Test Serial Data
+TCKS： Test Clock
+以上仅仅是信号线，除此之外还可能有一些其他引脚
+
+VTREF： 接口信号电平参考电压一般直接连接 Vsupply，通常也是必选的。这个可以用来确定 JTAG 接口使用的逻辑电平！我们常用的 J-Link、ULINK 等都可以由 5V 电压供电，然后其内部则可以转换输出 1.8V ~ 5V 从而直接给芯片供电。
+System Reset ( nSRST)： 可选项，与目标板上的系统复位信号相连，可以直接对目标系统复位。同时可以检测目标系统的复位情况，为了防止误触发应在目标端加上适当的上拉电阻。
+Return Test Clock ( RTCK)： 可选项，由目标端反馈给仿真器的时钟信号，用来同步 TCK 信号的产生，不使用时直接接地
+通常它复用 JTAG 的 TMS 和 TCK 信号分别传输 SWDIO 和 SWDCLK 信号，从而允许用户使用 JTAG 或 SWD。
+
+5：
+选项字节编程
+选项字节的编程方式与普通用户地址不同。选项字节的数量限制为8（1个、2个或4个用于写保护，1个用于读保护，1个用于硬件配置，2个空闲字节用于用户数据）。解锁 Flash 访问后，用户必须通过将同一组KEYS（KEY1和KEY2）写入 FLASH_OPTKEYR 寄存器来授权选项字节的编程，以设置 FLASH_CR 寄存器中的 OPTWRE 位（请参阅 Unlocking the Flash memory 以获取 key 值）。然后，用户必须在 FLASH_CR 寄存器中设置 OPTPG 位，并在所需的 Flash 地址处执行半字写入操作。
+
+首先读取被寻址的选项字节的值，以检查它是否真的被擦除。如果没有，则跳过编程操作，并由FLASH_SR寄存器中的 WRPRTERR 位发出警告。编程操作的结束由 FLASH_SR 寄存器中的 EOP 位指示。
+
+在编程操作开始之前，选项字节会自动互补到下一个 flash memory 地址中。这保证了选项字节及其补码始终是正确的。
+
+顺序如下：
+
+通过检查 FLASH_SR 寄存器中的 BSY 位，检查是否没有正在进行的 Flash memory 操作。
+解锁 FLASH_CR 寄存器中的 OPTWRE 位。
+在 FLASH_CR 寄存器中设置 OPTPG 位。
+将数据（半字）写入所需地址。
+等待 BSY 位复位清零。
+读取编程值并进行验证。
+当 Flash memory 读保护选项从受保护更改为不受保护时，在重新编程"读保护选项"之前，将执行主Flash memory 的大规模擦除。如果用户想要改变"读保护选项"以外的选项，则不执行大规模擦除。读保护选项字节的这个擦除状态保护了 Flash memory。
+
+选项字节解锁顺序代码示例
+/* (1) Wait till no operation is on going */
+/* (2) Check that the Flash is unlocked */
+/* (3) Perform unlock sequence for Flash */
+/* (4) Check that the Option Bytes are unlocked */
+/* (5) Perform unlock sequence for Option Bytes */
+while ((FLASH->SR & FLASH_SR_BSY) != 0) /* (1) */
+{
+  /* For robust implementation, add here time-out management */
+}
+if ((FLASH->CR & FLASH_CR_LOCK) != 0) /* (2) */
+{
+  FLASH->KEYR = FLASH_FKEY1; /* (3) */
+  FLASH->KEYR = FLASH_FKEY2;
+}
+if ((FLASH->CR & FLASH_CR_OPTWRE) == 0) /* (4) */
+{
+  FLASH->OPTKEYR = FLASH_OPTKEY1; /* (5) */
+  FLASH->OPTKEYR = FLASH_OPTKEY2;
+}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+选项字节编程顺序代码示例
+/* (1) Set the PG bit in the FLASH_CR register to enable programming */
+/* (2) Perform the data write */
+/* (3) Wait until the BSY bit is reset in the FLASH_SR register */
+/* (4) Check the EOP flag in the FLASH_SR register */
+/* (5) Clear the EOP flag by software by writing it at 1 */
+/* (6) Reset the PG Bit to disable programming */
+FLASH->CR |= FLASH_CR_OPTPG; /* (1) */
+*opt_addr = data; /* (2) */
+while ((FLASH->SR & FLASH_SR_BSY) != 0) /* (3) */
+{
+  /* For robust implementation, add here time-out management */
+}
+if ((FLASH->SR & FLASH_SR_EOP) != 0) /* (4) */
+{
+  FLASH->SR = FLASH_SR_EOP; /* (5) */
+}
+else
+{
+  /* Manage the error cases */
+}
+FLASH->CR &= ~FLASH_CR_OPTPG; /* (6) */
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+选项字节擦除顺序
+选项字节擦除顺序如下：
+
+通过读取 FLASH_SR 寄存器中的 BSY 位，检查是否没有正在进行的 Flash memory 操作。
+解锁 FLASH_CR 寄存器中的 OPTWRE 位。
+在 FLASH_CR 寄存器中设置 OPTER 位。
+在 FLASH_CR 寄存器中设置 STRT 位。
+等待 BSY 位复位清零。
+读取擦除的选项字节并验证
+示例代码如下（没有写解锁代码，参考上面即可）：
+
+/* (1) Set the OPTER bit in the FLASH_CR register to enable option byte erasing */
+/* (2) Set the STRT bit in the FLASH_CR register to start the erasing */
+/* (3) Wait until the BSY bit is reset in the FLASH_SR register */
+/* (4) Check the EOP flag in the FLASH_SR register */
+/* (5) Clear EOP flag by software by writing EOP at 1 */
+/* (6) Reset the PER Bit to disable the page erase */
+FLASH->CR |= FLASH_CR_OPTER; /* (1) */
+FLASH->CR |= FLASH_CR_STRT; /* (2) */
+while ((FLASH->SR & FLASH_SR_BSY) != 0) /* (3) */
+{
+  /* For robust implementation, add here time-out management */
+}
+if ((FLASH->SR & FLASH_SR_EOP) != 0) /* (4) */
+{
+  FLASH->SR = FLASH_SR_EOP; /* (5)*/
+}
+else
+{
+  /* Manage the error cases */
+}
+FLASH->CR &= ~FLASH_CR_OPTER; /* (6) */
+
+6：
+从可编程次数来看，NVM可以分为3类：
+
+MTP: Multiple-Time Programmable，可以多次编程
+FTP: Few-Time Programmable，可编程的次数有限
+OTP: One-Time Programmable，只允许编程一次，一旦被编程，数据永久有效
+可见，OTP(One Time Programmable)指的是可编程的次数，并不特指某一种存储器。
+
+
+7：ESP32
+esp-idf-tools-setup-offline-5.0.4 这个软件安装，5.12编译有问题对ESP32-C2模组
+
+1：安装ESP32的IDE和编译环境 这个就一步
+2：进入工程目录
+cd %userprofile%\esp
+xcopy /e /i %IDF_PATH%\examples\get-started\hello_world hello_world
+
+
+cd %userprofile%\esp\hello_world
+idf.py set-target esp32  //设定芯片目标
+idf.py menuconfig //工程配置
+
+idf.py --list-targets 查看当前 ESP-IDF 版本支持的所有目标芯片。
+
+idf.py set-target esp32c2
+
+请使用以下命令，编译烧录工程：
+
+idf.py build
+
+烧录到设备
+请运行以下命令，将刚刚生成的二进制文件烧录至 ESP32 开发板：
+
+idf.py -p PO
+idf.py -p COM8 flash  这个可以烧录
+请将 PORT 替换为 ESP32 开发板的串口名称。如果 PORT 未经定义，idf.py 将尝试使用可用的串口自动连接。
+
+监视输出
+可以使用 idf.py -p PORT monitor 命令，监视 “hello_world” 工程的运行情况。注意，不要忘记将 PORT 替换为自己的串口名称。
+idf.py -p COM8 monitor
+
+使用快捷键 Ctrl+]，可退出 ESP-IDF 监视器。
+
+
+8：dos
+## 删除hello2.txt文件
+del hello2.txt
+## 将hello.txt名称改为 hello2.txt
+rename hello.txt hello2.txt
+## 新疆sky文件
+mkdir sky
+## 递归删除sky文件夹
+rmdir /s/q sky
+
+9:本地编译ESP
+编译时需要联网才能编译 注意
+
+第一步：ESP-IDF 快速入门
+
+git clone --recursive https://github.com/espressif/esp-at.git 获取代码
+python build.py install
+连接设备
+
+python build.py menuconfig   
+python build.py build
+python build.py -p COM8 flash
+10：
+STM32 的中断向量具有两个属性，一个为抢占属性 ，另一个为响应属性 ，其属性编号越小 ，表明它的优先级别越高 ( 编号越小优先级越高 )。
+
+抢占优先级
+抢占，是指打断其它中断的属性，即因为具有这个属性，会出现嵌套中断(在执行中断服务函数 A 的过程中被中断 B 打断，执行完中断服务函数 B 再继续执行中断服务函数 A)，抢占属性由 NVIC_IRQChannelPreemptionPriority 的参数配置。
+
+响应优先级
+响应属性则应用在抢占属性相同的情况下，当两个中断向量的抢占优先级相同时，如果两个中断同时到达，则先处理响应优先级高的中断，响应属性由 NVIC_IRQChannelSubPriority 的参数配置。
+
+11--------------------------------
+配置预取指缓存Configure the Flash prefetch.
+Flash通过AHB协议执行指令存取和数据存取，它以预存取缓冲的方式，加速CPU代码的执行
+简单来说，预取指缓存(Flash Prefetch)就是CPU从Flash读取指令时的缓存器，该缓存器有2个，每个64 位，每次从Flash读取指令时，一次读取64位(因为Flash的带宽是64位)，而CPU每次取指最多是32位，这样CPU在读取指令时，下一条指令已经装载在缓冲区中，从而可以提高CPU的工作效率
+/**
+  * @brief  Enable the FLASH prefetch buffer.
+  * @retval None
+  */
+#define __HAL_FLASH_PREFETCH_BUFFER_ENABLE()    SET_BIT(FLASH->ACR, FLASH_ACR_PRFTEN)
+
+0x5002 2000 - 0x5002 23FF 0x4002 2000 - 0x4002 23FF 1 K FLASH registers FLASH register map 
+This bit enables the prefetch buffer in the embedded flash memory.
+0: Prefetch disabled
+1: Prefetch enabled
+------------------------------
+12时钟
+#define __HAL_RCC_PWR_CLK_DISABLE()            CLEAR_BIT(RCC->AHB3ENR, RCC_AHB3ENR_PWREN)
+Bits 4:2 Reserved, must be kept at reset value.
+Bit 1 SYSCFGEN: SYSCFG clock enable
+This bit is set and cleared by software.
+0: SYSCFG clock disabled
+1: SYSCFG clock enabled
+
+RCC clock functional description
+Four different clock sources can be used to drive the system clock (SYSCLK):
+• HSI16: high-speed internal 16 MHz RC oscillator clock
+• MSIS: multi-speed internal RC oscillator clock
+• HSE: high-speed external crystal or clock, from 4 to 50 MHz
+• PLL1 clock
+The MSIS is used as system clock source after startup from reset, configured at 4 MHz.
+The devices have the following additional clock sources:
+• MSIK: multi-speed internal RC oscillator clock used for peripherals kernel clocks
+• LSI: 32 kHz/250 Hz low-speed internal RC that drives the independent watchdog and
+optionally the RTC used for auto-wake-up from Stop and Standby modes
+• LSE: 32.768 kHz low-speed external crystal or clock that optionally drives the real-time
+clock (rtc_ck)
+Reset and clock control (RCC) RM0456
+482/3637 RM0456 Rev 4
+• HSI48: internal 48 MHz RC that potentially drives the OTG_FS, the USB, the SDMMC,
+and the RNG
+• SHSI: secure high-speed internal 48 MHz RC that drives the SAES
+• PLL2 and PLL3 clocks
+
+
+-----------------------------------------
+用FFT对信号进行频谱分析是一种常用的方法。FFT（快速傅里叶变换）是一种高效的算法，可以将时域信号转换为频域信号，从而得到信号的频谱信息。
+
+以下是使用FFT进行频谱分析的步骤：
+
+准备信号数据：首先需要准备要进行频谱分析的信号数据。这可以是模拟信号或时域离散信号。
+
+选择合适的采样率：对于模拟信号，需要按照采样定理将其转换为时域离散信号。在进行采样时，需要选择合适的采样率，以确保信号的频谱信息不会丢失。
+
+对信号进行FFT变换：使用FFT算法对信号进行变换，将时域信号转换为频域信号。FFT算法可以高效地计算出信号的频谱。
+
+获取频谱信息：通过FFT变换得到的频域信号，可以获取信号的频谱信息。频谱信息包括信号的幅度谱和相位谱。
+
+可视化频谱：最后，可以将频谱信息进行可视化，以便更直观地观察信号的频谱特征。可以使用绘图工具（如Matplotlib）将频谱绘制成图形。
+--------------------------------------------------------------------
+13 SPI flash 读设备商ID和设备Id
+
+cs 拉低    发送指令+24/32地址 +Mid+（Dummy 可能有）Did  CS拉高  
+---------------------------------------------------------------------
+“\0”在c语言中代表“字符串结束符”。“\0”的ASCII码为“0”，也就是空字符；字符串总是以“\0”作为串的结束符；因此当把一个字符串存入一个数组时，也把结束符“\0”存入数组，并以此作为该字符串是否结束的标志。
+
+c语言中'\0'是字符串的结束符，任何字符串之后都会自动加上'\0'。如果字符串末尾少了‘\0’转义字符，则其在输出时可能会出现乱码问题。这个'\0'是占一个位置的，所以如果一个长度为20的字符串要放在一个字符串数组里面的话，这个字符串数组长度至少为21
+--------------------------------------------------------------------------
+15：如果要升级输入d 字符
+采用YMODEM 模式进行程序下载和升级
+一般升级的文件都是bin格式，BIN格式跟flash存储是一模一样的
+-----------------------------------------------------------
+FLASH编程选项字节
+Bit 31 TZEN: Global TrustZone security enable
+0: Global TrustZone security disabled
+1: Global TrustZone security enabled
+Bit 30 IO_VDDIO2_HSLV: High-speed IO at low V DDIO2 voltage configuration bit
+This bit can be set only with V DDIO2 below 2.5 V.
+0: High-speed IO at low V DDIO2  voltage feature disabled (V DDIO2 can exceed 2.5 V)
+1: High-speed IO at low V DDIO2  voltage feature enabled (V DDIO2 remains below 2.5 V)
+Bit 29 IO_VDD_HSLV: High-speed IO at low V DD  voltage configuration bit
+This bit can be set only with V DD below 2.5V
+0: High-speed IO at low V DD  voltage feature disabled (V DD can exceed 2.5 V)
+1: High-speed IO at low V DD  voltage feature enabled (V DD remains below 2.5 V)
+Bit 28 PA15_PUPEN: PA15 pull-up enable
+0: USB power delivery dead-battery enabled/TDI pull-up deactivated
+1: USB power delivery dead-battery disabled/TDI pull-up activated
+Bit 27 NBOOT0: NBOOT0 option bit
+0: NBOOT0 = 0
+1: NBOOT0 = 1
+Bit 26 NSWBOOT0: Software BOOT0
+0: BOOT0 taken from the option bit NBOOT0
+1: BOOT0 taken from PH3/BOOT0 pin
+Bit 25 SRAM2_RST: SRAM2 erase when system reset
+0: SRAM2 erased when a system reset occurs
+1: SRAM2 not erased when a system reset occurs
+Bit 24 SRAM2_ECC: SRAM2 ECC detection and correction enable
+0: SRAM2 ECC check enabled
+1: SRAM2 ECC check disabled
+RM0456 Rev 4 341/3637
+RM0456 Embedded flash memory (FLASH)
+361
+Bit 23 SRAM3_ECC: SRAM3 ECC detection and correction enable
+0: SRAM3 ECC check enabled
+1: SRAM3 ECC check disabled
+Note: This bit is only available on some devices in the STM32U5 Series. Refer to the device
+datasheet for availability of its associated peripheral. If not present, consider this bit as
+reserved and keep it at reset value.
+Bit 22 BKPRAM_ECC: Backup RAM ECC detection and correction enable
+0: Backup RAM ECC check enabled
+1: Backup RAM ECC check disabled
+Bit 21 DUALBANK: Dual-bank configuration
+– 2-Mbyte flash memory devices for STM32U59x/5Ax/5Fx/5Gx
+– 1-Mbyte flash memory devices for STM32U575/585
+– 256-Kbyte and 128-Kbyte flash memory devices for STM32U535/545
+0: Single-bank flash memory with contiguous address in bank 1
+1: Dual-bank flash memory with contiguous addresses
+Bit 20 SWAP_BANK: Swap banks
+0: Bank 1 and bank 2 addresses not swapped
+1: Bank 1 and bank 2 addresses swapped
+Bit 19 WWDG_SW: Window watchdog selection
+0: Hardware window watchdog selected
+1: Software window watchdog selected
+Bit 18 IWDG_STDBY: Independent watchdog counter freeze in Standby mode
+0: Independent watchdog counter frozen in Standby mode
+1: Independent watchdog counter running in Standby mode
+Bit 17 IWDG_STOP: Independent watchdog counter freeze in Stop mode
+0: Independent watchdog counter frozen in Stop mode
+1: Independent watchdog counter running in Stop mode
+Bit 16 IWDG_SW: Independent watchdog selection
+0: Hardware independent watchdog selected
+1: Software independent watchdog selected
+Bit 15 SRAM_RST: All SRAMs (except SRAM2 and BKPSRAM) erase upon system reset
+0: All SRAMs (except SRAM2 and BKPSRAM) erased when a system reset occurs
+1: All SRAMs (except SRAM2 and BKPSRAM) not erased when a system reset occurs
+Bit 14 NRST_SHDW: Reset generation in Shutdown mode
+0: Reset generated when entering the Shutdown mode
+1: No reset generated when entering the Shutdown mode
+Bit 13 NRST_STDBY: Reset generation in Standby mode
+0: Reset generated when entering the Standby mode
+1: No reset generate when entering the Standby mode
+Bit 12 NRST_STOP: Reset generation in Stop mode
+0: Reset generated when entering the Stop mode
+1: No reset generated when entering the Stop mode
+Bit 11 Reserved, must be kept at reset value.
+Embedded flash memory (FLASH) RM0456
+342/3637 RM0456 Rev 4
+7.9.14  FLASH nonsecure boot address 0 register
+(FLASH_NSBOOTADD0R)
+Address offset: 0x44
+Reset value: 0xXXXX XXXX
+(Option bytes loaded with values from the flash memory at reset release)
+ST production value: 0x0800 007F
+Access: no wait state when no option bytes modification is ongoing; word, half-word, and
+byte access.
+This register can not be written if OPTLOCK bit is set. This register is nonsecure. It can be
+read and written by both secure and nonsecure access. This register can be protected
+against unprivileged access when NSPRIV = 1 in FLASH_PRIVCFGR register.
+Bits 10:8 BOR_LEV[2:0]: BOR reset level
+These bits contain the V DD supply level threshold that activates/releases the reset.
+000: BOR level 0 (reset level threshold around 1.7 V)
+001: BOR level 1 (reset level threshold around 2.0 V)
+010: BOR level 2 (reset level threshold around 2.2 V)
+011: BOR level 3 (reset level threshold around 2.5 V)
+100: BOR level 4 (reset level threshold around 2.8 V)
+Bits 7:0 RDP[7:0]: Readout protection level
+0xAA: Level 0 (readout protection not active)
+0x55: Level 0.5 (readout protection not active, only nonsecure debug access is possible).
+Only available when TrustZone is active (TZEN = 1)
+0xCC: Level 2 (chip readout protection active)
+Others: Level 1 (memories readout protection active)
+Note: Refer to Section 7.6.2 for more details
+
+
+
+
+BOOT0
+pin PH3 这个引脚拉低可以把程序烧写在Flash memory:
+0x0800 0000
+-------------------------------------------------------
+ unique device identifier  (UDID)
+ 唯一设备标识符
+
+Unique device ID register (96 bits)
+The 96-bit unique device identifier provides a reference number which is unique for any
+device and in any context. These bits cannot be altered by the user.
+Base address: 0x0BFA 0700
+Address offset: 0x00
+Read only = 0xXXXX XXXX where X is factory-programmed
+
+保存FLASH 大小
+Flash size data register
+Base address: 0x0BFA 07A0
+Address offset: 0x00
+Read only = 0xXXXX where X is factory-programmed
+封装数据寄存器
+Package data register
+Base address: 0x0BFA 0500
+Address offset: 0x00
+Read only = 0xXXXX where X is factory-programmed
+-------------------------------------
+esp32 休眠唤醒 设置
+GPIO4 置为 低 电 平 时 唤 醒
+AT+SLEEPWKCFG=2,4,0
+AT+CWMODE?
+AT+CWMODE=1,0
+AT+CWMODE=3,0
+列出当前可用的 AP
+命令：
+AT+CWLAP
+
+------------------------------------------
+切换为蓝牙模式从默认WIFI
+
+AT+RST
+AT+GMR
+AT+CWMODE=0
+AT+CWMODE=1
+AT+BLEINIT=2
+-------------------------------------
+网上的代码固件默认不支持 BLE AT指令 需要重新编译固件 增加BLE固件支持
+
+
+查询 Bluetooth LE 是否初始化
+命令：
+AT+BLEINIT?
+响应：
+若已初始化，AT 返回：
++BLEINIT:<role>
+OK
+若未初始化，AT 返回：
++BLEINIT:0
+OK
+
+设置命令
+功能：
+设置 Bluetooth LE 初始化角色
+命令：
+AT+BLEINIT=<init>
+响应：
+OK
+参数
+• <init>:
+• 0: 注销 Bluetooth LE
+• 1: client 角色
+• 2: server 角色
+
+
+
+设置加密参数。设置 auth_req 为 SC_MITM_BOND，服务端的 iocap 为 KeyboardOnly，客户
+端的 iocap 为 KeyboardDisplay，key_size 为 16，init_key 为 3, rsp_key 为 3。
+ESP32 Bluetooth LE 服务端：
+命令：
+AT+BLESECPARAM=13,2,16,3,3
+
+设置命令
+功能：
+设置 Bluetooth LE SMP 加密参数
+命令：
+AT+BLESECPARAM=<auth_req>,<iocap>,<enc_key_size>,<init_key>,<rsp_key>[,<auth_
+,→ option>]
+响应：
+OK
+参数
+• <auth_req>：认证请求。
+• 0: NO_BOND
+• 1: BOND
+• 4: MITM
+• 8: SC_ONLY
+• 9: SC_BOND
+• 12: SC_MITM
+• 13: SC_MITM_BOND
+Espressif Systems 132
+Submit Document Feedback
+Release v2.3.0.0-esp32c3-595-g6118fc225a
+Chapter 3. AT 命令集
+• <iocap>：输入输出能力。
+• 0: DisplayOnly
+• 1: DisplayYesNo
+• 2: KeyboardOnly
+• 3: NoInputNoOutput
+• 4: Keyboard display
+• <enc_key_size>：加密密钥长度。参数范围：[7,16]。单位：字节。
+• <init_key>：多个比特位组成的初始密钥。
+• <rsp_key>：多个比特位组成的响应密钥。
+• <auth_option>：安全认证选项：
+• 0: 自动选择安全等级；
+• 1: 如果无法满足之前设定的安全等级，则会断开连接。
+说明
+• <init_key> 和 <rsp_key> 参数的比特位组合模式如下：
+• Bit0: 用于交换初始密钥和响应密钥的加密密钥；
+• Bit1: 用于交换初始密钥和响应密钥的 IRK 密钥；
+• Bit2: 用于交换初始密钥和响应密钥的 CSRK 密钥；
+• Bit3: 用于交换初始密钥和响应密钥的 link 密钥（仅用于 Bluetooth LE 和 BR/EDR 共存模式）。
+示例
+AT+BLESECPARAM=1,4,16,3,3,0
+
+AT+RST
+
+OKAT
+
+OKATE0
+
+OK
+OK
+ready
+AT+SYSMSG=7
+
+AT+GMR
+AT version:3.3.0.0-dev(da9d43f - ESP32C2 - Nov 30 2023 08:34:00)
+SDK version:v5.0.4-dirty
+compile time(a274a2c5):Dec 12 2023 11:56:41
+Bin version:v4.0.0.0-dev(ESP32C2-4MB)
+
+AT+CWMODE=0
+
+AT+BLEINIT=2
+
+AT+BLEADDR?
+AT+BLEADVPARAM=50,50,0,0,7,0,,
+
+AT+BLEADVDATA="02010606094447353030030302A0"
+
+AT+BLESECPARAM=1,0,16,3,3
+
+AT+BLESETKEY=123456
+
+AT+BLEADVSTART
+-------------------------------------------
+成功的开启蓝牙广播流程
+AT+RST
+OK
+AT+CWMODE=0
+
+OK
+AT+BLEINIT=2
+
+OK
+AT+BLEADDR?
++BLEADDR:"08:3a:8d:48:82:46"
+OK
+AT+BLEADVPARAM=50,50,0,0,7,0,,
+
+OK
+AT+BLEADVDATA="0201060A09457370726573736966030302A0"
+
+OK
+AT+BLEADVSTART
+
+OK
+--------------------------------------
+ESP32 和手机之间建立 Bluetooth LE 连接并配对  实际验证ok
+AT+RST
+OK
+AT+CWMODE=0
+
+AT+BLEINIT=2
+
+OK
+AT+BLEADDR?
++BLEADDR:"08:3a:8d:48:82:46"
+OK
+AT+BLEADVPARAM=50,50,0,0,7,0,,
+
+OK
+AT+BLEADVDATA="0201060A09457370726573736966030302A0"
+
+OK
+AT+BLESECPARAM=1,0,16,3,3
+
+AT+BLESETKEY=123456
+
+OK
+AT+BLEADVSTART
+
+OK
+到这一步 手机客户端APP要打开连接ESP服务端设备。连接成功后
+
+AT+BLEENC=0,3
+这时手机客户端弹出连接配对界面，点确定 输入秘钥 123456 点配对
+ESP服务端会提示配对成功
+--------------------------------------
+ESP32 和WENDOWS Bluetooth LE 连接并配对 实际验证ok
+AT+RST
+OK
+AT+CWMODE=0
+
+AT+BLEINIT=2
+
+OK
+AT+BLEADDR?
++BLEADDR:"08:3a:8d:48:82:46"
+OK
+AT+BLEADVPARAM=50,50,0,0,7,0,,
+
+OK
+AT+BLEADVDATA="0201060A09457370726573736966030302A0"
+
+OK
+AT+BLESECPARAM=1,0,16,3,3
+
+AT+BLESETKEY=123456
+
+OK
+AT+BLEADVSTART
+
+OK
+
+这时电脑端点连接配对界面，点确定 输入秘钥 123456 点配对
+ESP服务端会提示配对成功
+
+-----------------------------------------
+网上下载AT的官网固件
+
+使用固件下载工具flash_download_tool_3.9.5.exe ，可以下载到模组里面，固件名称： ESP32-C2-4MB-V3.1.0.0.zip  模组是：ESP32-MINI-1
+ 下载之后模组可以看到如下信息：
+ AT cmd port:uart1 tx:7 rx:6 cts:5 rts:4 baudrate:115200
+module_name: ESP32C2-4MB
+max tx power=78, ret=0
+3.1.0
+--------------------------------------
+1 Pairing
+区别于传统蓝牙的配对过程，BLE 的配对过程发生在连接过程之后，实现的是链路层的安全。
+------------------------------------------------------------
+
+3.4.9 AT+BLEADVDATA：设置 Bluetooth LE 广播数据
+设置命令
+功能：
+设置广播数据
+命令：
+AT+BLEADVDATA=<adv_data>
+Espressif Systems 113
+Submit Document Feedback
+Release v2.3.0.0-esp32c3-595-g6118fc225a
+Chapter 3. AT 命令集
+响应：
+OK
+参数
+• <adv_data>：广播数据，为 HEX 字符串。例如，若想设置广播数据为“0x11 0x22 0x33 0x44 0x55”，
+则命令为 AT+BLEADVDATA="1122334455"。最大长度：31 字节。
+
+3.4.8 AT+BLEADVPARAM：查询/设置 Bluetooth LE 广播参数
+查询命令
+功能：
+查询广播参数
+命令：
+AT+BLEADVPARAM?
+响应：
++BLEADVPARAM:<adv_int_min>,<adv_int_max>,<adv_type>,<own_addr_type>,<channel_map>,
+,→ <adv_filter_policy>,<peer_addr_type>,<peer_addr>
+OK
+设置命令
+功能：
+设置广播参数
+命令：
+AT+BLEADVPARAM=<adv_int_min>,<adv_int_max>,<adv_type>,<own_addr_type>,<channel_map>
+,→ [,<adv_filter_policy>][,<peer_addr_type>,<peer_addr>]
+响应：
+OK
+Espressif Systems 112
+Submit Document Feedback
+Release v2.3.0.0-esp32c3-595-g6118fc225a
+Chapter 3. AT 命令集
+参数
+• <adv_int_min>：最小广播间隔。参数范围：[0x0020,0x4000]。广播间隔等于该参数乘以 0.625 毫
+秒，所以实际的最小广播间隔范围为 [20,10240] 毫秒。本参数值应小于等于 <adv_int_max> 参
+数值。
+• <adv_int_max>：最大广播间隔。参数范围：[0x0020,0x4000]。广播间隔等于该参数乘以 0.625 毫
+秒，所以实际的最大广播间隔范围为 [20,10240] 毫秒。本参数值应大于等于 <adv_int_min> 参
+数值。
+• <adv_type>:
+• 0: ADV_TYPE_IND
+• 1: ADV_TYPE_DIRECT_IND_HIGH
+• 2: ADV_TYPE_SCAN_IND
+• 3: ADV_TYPE_NONCONN_IND
+• 4: ADV_TYPE_DIRECT_IND_LOW
+• <own_addr_type>：Bluetooth LE 地址类型
+• 0: BLE_ADDR_TYPE_PUBLIC
+• 1: BLE_ADDR_TYPE_RANDOM
+• <channel_map>：广播信道
+• 1: ADV_CHNL_37
+• 2: ADV_CHNL_38
+• 4: ADV_CHNL_39
+• 7: ADV_CHNL_ALL
+• [<adv_filter_policy>]：广播过滤器规则
+• 0: ADV_FILTER_ALLOW_SCAN_ANY_CON_ANY
+• 1: ADV_FILTER_ALLOW_SCAN_WLST_CON_ANY
+• 2: ADV_FILTER_ALLOW_SCAN_ANY_CON_WLST
+• 3: ADV_FILTER_ALLOW_SCAN_WLST_CON_WLST
+• [<peer_addr_type>]：对方 Bluetooth LE 地址类型
+• 0: PUBLIC
+• 1: RANDOM
+• [<peer_addr>]：对方 Bluetooth LE 地址
+-----------------------------------------------------------------
+启用系统消息过滤，实现 HTTP 透传下载功能 实际验证OK
+本例以下载一个 PNG 格式的图片文件为例，图片链接为 https://www.espressif.com/sites/default/files/home/
+hardware.png
+
+1：AT+RESTORE
+AT+CWMODE=1
+AT+CWJAP="SW_TEST_TEAM","Tester0610"
+AT+SYSMSGFILTERCFG=1,18,3
+^+HTTPCGET:[0-9]*,\r\n$
+AT+SYSMSGFILTERCFG=1,0,7
+\r\nOK\r\n$
+AT+SYSMSGFILTER=1
+ATE0
+AT+HTTPCGET="https://www.espressif.com/sites/default/files/home/hardware.png",2048,2048,5000
+AT+SYSMSGFILTERCFG=0
+AT+SYSMSGFILTER=0
+ATE1
+------------------------------------------------
+ESP32 设备作为 TCP 客户端建立单连接 验证OK
+AT+RESTORE
+AT+CWMODE=1
+AT+CWJAP="SW_TEST_TEAM","Tester0610"
+AT+CIPSTA?
+用网络调试助手工具建立TCP服务器 同一个路由器 本地电脑"TCP","192.168.1.135",8080
+AT+CIPSTART="TCP","192.168.1.135",8080
+AT+CIPSEND=4 
+发送内容：rong
+服务器会接收到数据
+服务器发送数据rong 客户端会显示 +IPD,4:rong
+-----------------------------------------------
+作为TCP服务器使用 使用热点的方式 ok
+AT+RESTORE 
+AT+CWMODE=2
+AT+CIPMUX=1
+AT+CWSAP="ESP32_softAP","1234567890",5,3
+AT+CIPAP?
+AT+CIPSERVER=1
+AT+CIPSEND=0,4
+AT+CIPCLOSE=0
+--------------------------------
+MQTT代理服务器
+实现思路：
+1. 使用EMQ搭建MQTT的代理服务器。
+
+2. 后台(PHP)可以通过phpMQTT类库或者通过安装扩展作为客户端连接mqtt代理，发布消息或订阅主题，和将消息存入数据库等等。
+
+3. 硬件Esp8266 NodeMCU通过mqtt库连接代理，同样的发布消息或者订阅主题
+MQTT简介：
+        MQTT(Message Queuing Telemetry Transport，消息队列遥测传输)是IBM开发的一个即时通讯协议，有可能成为物联网的重要组成部分。该协议支持所有平台，几乎可以把所有联网物品和外部连接起来，被用来当做传感器和制动器(比如通过Twitter让房屋联网)的通信协议。
+
+ 
+
+EMQ简介：
+        EMQ X Enterprise 企业级物联网 MQTT 消息平台，支持百万级物联网设备一站式接入、MQTT&CoAP 多协议处理、低时延实时消息通信。支持基于 SQL 的内置规则引擎，灵活处理/转发消息到后端服务，存储消息数据到各种数据库，或桥接 Kafka、RabbitMQ 等企业中间件。
+
+1
+下载 emqx-5.3.2-windows-amd64.zip ，解压
+2
+命令行下进入解压路径，启动 EMQX--进入目录 cmd命令打开目录
+运行
+emqx start
+3： 浏览器打开网址  http://localhost:18083
+
+EMQ管控后台默认账号: admin 密码: public  改密码为123321a? 123321a?   这个不能忘记
+登进去可以使用
+4：
+下载MQTT客户端“MQTT.fx”的软件，
+5： 打开客户端MQTT.fx 设置并连接上去使用
+6：emqx stop
+
+-------------------------------------------------------------------
+MQTT 客户端
+MQTT客户端是实际与代理进行通信的设备或应用程序。它可以是传感器、物联网设备、移动应用程序或其他任何能够发送和接收MQTT消息的实体。MQTT客户端通过连接到代理来进行通信，并使用特定的主题（Topic）来订阅消息或发布消息。
+
+MQTT客户端通常具有以下基本功能：
+
+连接到代理： 客户端通过使用代理的地址（主机名或IP地址）和端口号，以及可选的用户名和密码，连接到MQTT代理。连接过程中还可以指定一些其他的选项，如保持活动时间、清理会话等。
+
+订阅主题： 客户端可以订阅一个或多个主题。订阅主题意味着客户端对这些主题上发布的消息感兴趣，并希望接收这些消息。
+
+发布消息： 客户端可以发布消息到一个或多个主题上。发布消息意味着客户端将消息发送给代理，并代理将该消息传递给订阅了相应主题的所有客户端。
+
+处理收到的消息： 客户端可以定义回调函数来处理收到的消息。当客户端接收到订阅主题上的消息时，回调函数将被调用，从而允许客户端对消息进行处理。
+
+MQTT 代理
+MQTT代理是作为消息中介的服务器。它负责接收来自客户端的消息，并将这些消息传递给订阅了相应主题的其他客户端。代理还负责维护客户端的连接，并处理客户端的订阅和发布请求。
+
+MQTT代理具有以下主要功能：
+
+连接管理： 代理管理与客户端的连接。它接受客户端的连接请求，并确保客户端的身份验证和权限验证（可选）。
+
+主题订阅： 代理维护主题与客户端之间的关联关系。当客户端订阅一个主题时，代理将客户端添加到与该主题相关的订阅列表中。
+
+消息路由： 代理根据客户端的订阅关系，将发布到某个主题的消息传递给订阅了该主题的客户端。代理根据订阅列表中的信息，将消息路由到对应的客户端。
+
+消息存储和持久化： 代理可以选择将消息存储在内存中或持久化到磁盘上，以确保即使在客户端离线时也能传递消息。这样，当客户端重新连接时，代理可以将未传递的消息发送给客户端。
+
+QoS级别支持： 代理支持不同的服务质量（Quality of Service，QoS）级别，以满足不同的通信需求。QoS级别定义了消息传递的可靠性和顺序性要求。
+
+MQTT 客户端和代理的连接过程
+下面是MQTT客户端和代理之间的连接过程：
+
+客户端发起连接请求： 客户端使用代理的地址（主机名或IP地址）和端口号发起连接请求。客户端还可以提供可选的用户名和密码进行身份验证。
+
+代理接受连接请求： 代理接受客户端的连接请求，并根据需要进行身份验证和权限验证。
+
+客户端与代理建立连接： 客户端与代理成功建立连接，并建立网络连接。一旦连接建立，客户端可以开始发送和接收MQTT消息。
+
+客户端订阅主题： 客户端可以发送订阅请求给代理，指定要订阅的主题和订阅级别。代理根据订阅请求将客户端添加到相应主题的订阅列表中。
+
+代理转发消息： 当有其他客户端发布与订阅主题匹配的消息时，代理将这些消息传递给订阅了相应主题的客户端。代理根据订阅列表将消息路由到正确的客户端。
+
+客户端发布消息： 客户端可以使用发布请求将消息发送给代理。客户端指定消息的主题和QoS级别，代理负责将该消息传递给订阅了相应主题的客户端。
+
+连接保持活动： 客户端和代理之间可以维持一个心跳机制，以确保连接的活跃性。客户端定期发送心跳消息给代理，代理响应以确认连接的活跃状态。
+
+断开连接： 当客户端不再需要与代理通信时，它可以主动断开连接，或者代理也可以关闭连接。断开连接后，客户端无法发送或接收MQTT消息。
+
+通过上述连接过程，MQTT客户端可以与代理建立稳定的通信通道，并进行消息的订阅和发布操作。
+
+总结
+MQTT客户端和代理之间的连接是实现物联网应用中至关重要的一环。客户端通过与代理建立连接，可以实现订阅和发布消息的功能。代理负责接收和转发消息，并维护客户端的连接状态和订阅关系。
+
+在连接过程中，客户端通过连接请求与代理建立连接。代理接受连接请求并进行身份验证和权限验证（可选）。一旦连接建立，客户端可以订阅一个或多个主题，表明对这些主题上发布的消息感兴趣。同时，客户端也可以通过发布消息将消息发送给代理，并由代理转发给订阅了相应主题的客户端。
+------------------------------------------------------
+3.5.2 AT+MQTTUSERCFG：设置 MQTT 用户属性
+设置命令
+功能：
+配置 MQTT 用户属性
+命令：
+AT+MQTTUSERCFG=<LinkID>,<scheme>,<"client_id">,<"username">,<"password">,<cert_key_
+,→ ID>,<CA_ID>,<"path">
+响应：
+OK
+参数
+• <LinkID>：当前仅支持 link ID 0。
+• <scheme>：
+– 1: MQTT over TCP；
+– 2: MQTT over TLS（不校验证书）；
+– 3: MQTT over TLS（校验 server 证书）；
+– 4: MQTT over TLS（提供 client 证书）；
+– 5: MQTT over TLS（校验 server 证书并且提供 client 证书）；
+– 6: MQTT over WebSocket（基于 TCP）；
+– 7: MQTT over WebSocket Secure（基于 TLS，不校验证书）；
+Espressif Systems 139
+Submit Document Feedback
+Release v2.3.0.0-esp32c3-533-gc0391fd1
+Chapter 3. AT 命令集
+– 8: MQTT over WebSocket Secure（基于 TLS，校验 server 证书）；
+– 9: MQTT over WebSocket Secure（基于 TLS，提供 client 证书）；
+– 10: MQTT over WebSocket Secure（基于 TLS，校验 server 证书并且提供 client 证书）。
+• <client_id>：MQTT 客户端 ID，最大长度：256 字节。
+• <username>：用户名，用于登陆 MQTT broker，最大长度：64 字节。
+• <password>：密码，用于登陆 MQTT broker，最大长度：64 字节。
+• <cert_key_ID>：证书 ID，目前 ESP-AT 仅支持一套 cert 证书，参数为 0。
+• <CA_ID>：CA ID，目前 ESP-AT 仅支持一套 CA 证书，参数为 0。
+• <path>：资源路径，最大长度：32 字节。
+---------------------------------------------------
+
+emqx-5.3.2-windows-amd64这个软件可以创建本地代理
+需要本地创建 MQTT 代理
+MOTT代理我的电脑 IP地址是：192.168.1.132 端口：1883  验证OK
+基于 TCP 的 MQTT 连接
+AT+RST
+AT+CWMODE=1
+AT+CWJAP="SW_TEST_TEAM","Tester0610"
+AT+CIPSTA?
+AT+MQTTUSERCFG=0,1,"publisher","espressif","123456789",0,0,""  
+##|AT+MQTTUSERCFG=0,1,"publisher","admin","123321a?",0,0,""
+AT+MQTTCONN=0,"192.168.1.132",1883,1
+AT+MQTTPUB=0,"topic","rong1",1,0
+AT+MQTTCLEAN=0
+
+以上命令是发布一个主题， 可以在电脑端安装一个MQTT客户端，订阅这个主题，就可以收到发布的消息了
+------------------------------------
+SSL/TLS是一种密码通信框架，他是世界上使用最广泛的密码通信方法。SSL/TLS综合运用了密码学中的对称密码，消息认证码，公钥密码，数字签名，伪随机数生成器等，可以说是密码学中的集大成者。
+
+SSL(Secure Socket Layer)安全套接层，是1994年由Netscape公司设计的一套协议，并与1995年发布了3.0版本。
+
+TLS(Transport Layer Security)传输层安全是IETF在SSL3.0基础上设计的协议，实际上相当于SSL的后续版本。
+SSL/TLS是一个安全通信框架，上面可以承载HTTP协议或者SMTP/POP3协议等。
+TLS主要分为两层，底层的是TLS记录协议，主要负责使用对称密码对消息进行加密。
+
+上层的是TLS握手协议，主要分为握手协议，密码规格变更协议和应用数据协议4个部分。
+
+握手协议负责在客户端和服务器端商定密码算法和共享密钥，包括证书认证，是4个协议中最最复杂的部分。
+密码规格变更协议负责向通信对象传达变更密码方式的信号
+警告协议负责在发生错误的时候将错误传达给对方
+应用数据协议负责将TLS承载的应用数据传达给通信对象的协议
+------------------------------------------------
+AWS IOT开发人员指南 在官网：https://docs.aws.amazon.com/zh_cn/iot/latest/developerguide/iot-gs.html
+注册时需要VISA的信用卡才能用。
+
+------------------------------------------------
+web serber AT 应用
+本质：是把 ESP32模块 加入了 web serber 功能 就是一个WEB 服务器  
+ 使用浏览器进行 Wi-Fi 配网
+简介
+通过 web server，手机或 PC 可以设置 ESP32-C2 设备的 Wi-Fi 连接信息。您可以使用手机或电脑连接
+到 ESP32-C2 设备的 AP，通过浏览器打开配网网页，并将 Wi-Fi 配置信息发送给 ESP32-C2 设备，然后
+ESP32-C2 设备将根据该配置信息连接到指定的路由器。
+
+1. 清除之前的配网信息，如果不清除配网信息，可能因为依然保留之前的配置信息从而导致 WEB 服
+务器无法创建。
+• Command
+AT+RESTORE
+2. 配置 ESP32-C2 设备为 Station + SoftAP 模式。
+• Command
+AT+CWMODE=3
+3. 设置 SoftAP 的 ssid 和 password（如设置默认连接 ssid 为 pos_softap，无密码的 Wi-Fi）。
+• Command
+AT+CWSAP="pos_softap","",11,0,3
+AT+CIPAP?
+4. 使能多连接。
+• Command
+AT+CIPMUX=1
+5. 创建 web server，端口：80，最大连接时间：25 s（默认最大为 60 s）。
+• Command
+AT+WEBSERVER=1,80,25
+
+
+电脑或者手机连接ESP ap
+网页上输入输入 ESP ap 地址 可以进入WIFI 配网和OTA固件升级界面
+------------------------------------------------
+MQTT是基于TCP/IP协议栈构建的异步通信消息协议，是一种轻量级的发布、订阅信息传输协议。可以在不可靠的网络环境中进行扩展，适用于设备硬件存储空间或网络带宽有限的场景。使用MQTT协议，消息发送者与接收者不受时间和空间的限制。物联网平台支持设备使用MQTT协议接入。
+QoS
+
+MQTT 提供了三种服务质量（QoS），在不同网络环境下保证消息的可靠性。
+
+QoS 0：消息最多传送一次。如果当前客户端不可用，它将丢失这条消息。
+QoS 1：消息至少传送一次。
+QoS 2：消息只传送一次。
+
+免费的公共 MQTT Broker
+
+在本文中，我们将使用 EMQ 提供的免费公共 MQTT Broker，它基于完全托管的 MQTT 云服务 - EMQX Cloud 创建。服务器信息如下：
+
+Server: broker.emqx.io
+
+TCP Port: 1883
+
+WebSocket Port: 8083
+
+SSL/TLS Port: 8883
+
+Secure WebSocket Port: 8084
+
+网页版 MQTT客户端  地址： http://www.emqx.io/online-mqtt-client 
+电脑版的客户端 名称MQTTX
+------------------------------------------------
+MQTT 应用体会
+
+手机端制作一个APP 里面包含MQTT客户端（SDK一般为云平台会提供）--------mqtt服务器（可以用公共的MQTT broker，云带MQTT服务器）----------设备端 也是MQTT客户端 
+里面集成MQTT客户端SDKSDK一般为云平台会提供）
+----------------------------------------------------
+LTE 模组昌吉 NB  TELIT
+ME310G1
+语音IC
+成都启英泰伦科技有限公司
+成都启英泰伦科技有限公司（以下简称“启英泰伦”）于2015年11月在成都高新区注册成立，是集语音芯片、语音算法、应用方案、开发平台于一体的行业领导型语音解决方案供应商。公司致力于为用户提供更自然、更简单、更智能的人机交互体验，让“智能语音+”产品无处不在
+---------------------------------------------------------------
+该示例以 http://httpbin.org 作为 HTTP 服务器。
+
+该示例以 http://httpbin.org 作为 HTTP 服务器。
+HTTP 客户端 GET 请求方法
+本例以下载一个 JPG 格式的图片文件为例。图片链接为 https://www.espressif.com/sites/all/themes/espressif/
+images/about-us/solution-platform.jpg。
+
+AT+RESTORE
+AT+CWMODE=1
+AT+CWJAP="SW_TEST_TEAM","Tester0610"
+AT+CIPSTA?
+AT+HTTPCLIENT=1,0,"http://httpbin.org/get",,,1       HTTP 客户端 HEAD 请求方法
+AT+HTTPCLIENT=2,0,"https://www.espressif.com/sites/all/themes/espressif/images/about-us/solution-platform.jpg",,,2    //下载一个 JPG 格式的图片文件
+
+
+-------------------------------------------------------------
+
+
+HTTP 请求方法
+根据 HTTP 标准，HTTP 请求可以使用多种请求方法。
+
+在日常开发中大多数会用到 5 种请求方法：GET、POST、PUT、PATCH 和 DELETE
+
+方法
+
+描述
+
+GET
+
+请求指定的页面信息，并返回实体主体。
+
+POST
+
+向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST 请求可能会导致新的资源的建立和/或已有资源的修改。
+
+PUT
+
+从客户端向服务器传送的数据取代指定的文档的内容。
+
+DELETE
+
+请求服务器删除指定的页面。
+
+PATCH
+
+是对 PUT 方法的补充，用来对已知资源进行局部更新
+
+
+------------------------------------------
+rt-thread 
+finsh
+
+ list_thread()
+ 在 msh 模式下输入 exit 后回车，
+即可切换到 C-Style 模式。在 C-Style 模式输入 msh() 后回车，即可进入 msh 模式。两种模式的命令不通
+用，msh 命令无法在 C-Style 模式下使用，反之同理。
+
+
+-----------------------------------------------------
+RT-Thread的构建与配置系统由以下几个部分组成
+
+构建配置系统
+kCONFIG
+scons
+env  
+--------------------------------------------------
+IAR 合并镜像并生成可以升级的镜像
+cmd /c "python $PROJ_DIR$\..\tools\create_image.py $PROJ_DIR$\..\ Debug output\bootload.bin $PROJ_FNAME$ $CONFIG_NAME$"
+--------------------------------------
+RT组件自动初始化
+#ifdef RT_USING_COMPONENTS_INIT
+/*
+ * Components Initialization will initialize some driver and components as following
+ * order:
+ * rti_start         --> 0
+ * BOARD_EXPORT      --> 1
+ * rti_board_end     --> 1.end
+ *
+ * DEVICE_EXPORT     --> 2
+ * COMPONENT_EXPORT  --> 3
+ * FS_EXPORT         --> 4
+ * ENV_EXPORT        --> 5
+ * APP_EXPORT        --> 6
+ *
+ * rti_end           --> 6.end
+ *
+ * These automatically initialization, the driver or component initial function must
+ * be defined with:
+ * INIT_BOARD_EXPORT(fn);
+ * INIT_DEVICE_EXPORT(fn);
+ * ...
+ * INIT_APP_EXPORT(fn);
+ * etc.
+ */
+ ---------------------------------
+ AT-client 这部分有问题 不是用RT 系统自带的，而是网上下载的那种。
+
+ ------------------------------------------
+ 配置开启 SAL 选项之后，需要在启动时对它进行初始化，开启 SAL 功能，如果程序中已经使用了组
+件自动初始化  组件中已经自动加载了
+
+------------------------------------------
+
+BT77 命令
+AT+CFUN=1
+ AT+CFUN Set UE Functionality
+ AT+GMM\r Request Model Identification
+
+ AT+GSN\r Request International Mobile Equipment Identity (IMEI)
+
+  AT+QCCID\r Show ICCID
+
+  AT+QICSGP\r  Configure parameters of a TCP/IP context
+
+  AT+QIACT\r  Activate a PDP context
+
+  AT+CSQ Signal Quality Report
+
+
+  AT+CGATT?\r
+AT+CGATT PS Attach or Detach
+
+
+---------------------------------------------------
+https://packages.rt-thread.org/search.html?classify=iot  RT-THEAD 开源软件包
+
+------------------------------------
+https://packages.rt-thread.org/detail.html?package=qboot   制作QBOOt  qboot ：一个用于快速制作bootloader的组件
+-----------------------------------------------
+其中VTref就是VCC接口。即：VCC-1；SWDIO-7；SWCLK-9；GND-20。    SWD
+
+
+---------------------------------------
+ENV 环境 如果 SCONS 报错  MENUCONFIG 一下 在SCONS 可能就ok了
+
+Citrix 账号：Intretech\YQ21902
+Citrix 密码：yq863@462 
+
+
+--------------------------------------
+// 串行Flash设备名称
+#define SFLASH_DEVICE_NAME        "flash"
+
+
+
+这个报错 需要改FLASH 驱动
+[1911] E/drv.w25q: W25QXXFlashOpen[441] RT_ERROR
+
+[1917] E/misc: env: dfs_mount_init, failed
+[1923] E/app.parm: open file error
+[1929] E/app.parm: open file error
+-----------------------------------------
+
+mx25 flash
+msh />**************************************************#
+CopyRight @ YQ BootLoader
+Software version: V1.0.0
+Created time    : Feb 21 2024, 10:15:43
+Flash ID        : 36c2
+FLASH_SIZE : 0X100000
+
+14018
+msh />**************************************************#
+CopyRight @ YQ BootLoader
+Software version: V1.0.0
+Created time    : Feb 21 2024, 10:15:43
+Flash ID        : 36c2
+FLASH_SIZE : 0X100000
+
+
+
+36 c2
+
+----------------------------------------------------------------
+串口代码
+static rt_err_t stm32_configure(struct rt_serial_device *serial, struct serial_configure *cfg)
+{
+    struct stm32_uart *uart;
+    RT_ASSERT(serial != RT_NULL);
+    RT_ASSERT(cfg != RT_NULL);
+
+    uart = rt_container_of(serial, struct stm32_uart, serial);
+    uart->handle.Instance          = uart->config->Instance;
+    uart->handle.Init.BaudRate     = cfg->baud_rate;
+    uart->handle.Init.Mode         = UART_MODE_TX_RX;
+#ifdef USART_CR1_OVER8
+    uart->handle.Init.OverSampling = cfg->baud_rate > 5000000 ? UART_OVERSAMPLING_8 : UART_OVERSAMPLING_16;
+#else
+    uart->handle.Init.OverSampling = UART_OVERSAMPLING_16;
+#endif /* USART_CR1_OVER8 */
+
+    switch (cfg->flowcontrol)
+    {
+    case RT_SERIAL_FLOWCONTROL_NONE:
+        uart->handle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+        break;
+    case RT_SERIAL_FLOWCONTROL_CTSRTS:
+        uart->handle.Init.HwFlowCtl = UART_HWCONTROL_RTS_CTS;
+        break;
+    default:
+        uart->handle.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+        break;
+    }
+
+    switch (cfg->data_bits)
+    {
+    case DATA_BITS_8:
+        if (cfg->parity == PARITY_ODD || cfg->parity == PARITY_EVEN)
+            uart->handle.Init.WordLength = UART_WORDLENGTH_9B;
+        else
+            uart->handle.Init.WordLength = UART_WORDLENGTH_8B;//
+        break;
+    case DATA_BITS_9:
+        uart->handle.Init.WordLength = UART_WORDLENGTH_9B;
+        break;
+    default:
+        uart->handle.Init.WordLength = UART_WORDLENGTH_8B;
+        break;
+    }
+
+    switch (cfg->stop_bits)
+    {
+    case STOP_BITS_1:
+        uart->handle.Init.StopBits   = UART_STOPBITS_1;//
+        break;
+    case STOP_BITS_2:
+        uart->handle.Init.StopBits   = UART_STOPBITS_2;
+        break;
+    default:
+        uart->handle.Init.StopBits   = UART_STOPBITS_1;
+        break;
+    }
+
+    switch (cfg->parity)
+    {
+    case PARITY_NONE:
+        uart->handle.Init.Parity     = UART_PARITY_NONE;//
+        break;
+    case PARITY_ODD:
+        uart->handle.Init.Parity     = UART_PARITY_ODD;
+        break;
+    case PARITY_EVEN:
+        uart->handle.Init.Parity     = UART_PARITY_EVEN;
+        break;
+    default:
+        uart->handle.Init.Parity     = UART_PARITY_NONE;
+        break;
+    }
+
+#ifdef RT_SERIAL_USING_DMA
+    if (!(serial->parent.open_flag & RT_DEVICE_OFLAG_OPEN)) {
+        uart->dma_rx.remaining_cnt = cfg->bufsz;
+    }
+#endif
+
+    if (HAL_UART_Init(&uart->handle) != HAL_OK)
+    {
+        return -RT_ERROR;
+    }
+    uart->DR_mask = stm32_uart_get_mask(uart->handle.Init.WordLength, uart->handle.Init.Parity);
+
+    return RT_EOK;
+}
+
+设备名字
+#if defined(BSP_USING_LPUART1)
+#ifndef LPUART1_CONFIG
+#define LPUART1_CONFIG                                              \
+    {                                                               \
+        .name = "lpuart1",                                          \
+        .Instance = LPUART1,                                        \
+        .irq_type = LPUART1_IRQn,                                   \
+    }
+
+
+
+    ----------------------------------------
+    0201060A09457370726573736966030302A0
+    02010606094447353030030302A0
+
+
+
+
+    -----------------------------------------
+
+ESP32 Bluetooth LE 服务端使能 Bluetooth LE SPP。
+命令：
+AT+BLESPP
+响应：
+OK
+>
+上述响应表示 AT 已经进入 Bluetooth LE SPP 模式，可以进行数据的发送和接收。
+说明：
+• ESP32BluetoothLE服户端开启BluetoothLESPP透传模式后
+
+
+------------------------------------------------------------
+
+温度
+#define LL_ADC_CHANNEL_VREFINT             (LL_ADC_CHANNEL_0 | ADC_CHANNEL_ID_INTERNAL_CH) /*!< ADC internal channel connected to VrefInt: Internal voltage reference. . */
+#define LL_ADC_CHANNEL_TEMPSENSOR          (LL_ADC_CHANNEL_19 | ADC_CHANNEL_ID_INTERNAL_CH) /*!< ADC internal channel connected to Temperature sensor. */
+#define LL_ADC_CHANNEL_VBAT                (LL_ADC_CHANNEL_18 | ADC_CHANNEL_ID_INTERNAL_CH) /*!< ADC internal channel connected to Vbat/4: Vbat voltage through a divider ladder of factor 1/4 to have Vbat always below Vdda.  */
+
+/* Channel differentiation between external and internal channels */
+#define ADC_CHANNEL_ID_INTERNAL_CH         (0x80000000UL) /* Marker of internal channel */
+#define ADC_CHANNEL_ID_INTERNAL_CH_MASK    (ADC_CHANNEL_ID_INTERNAL_CH)
+
+ADC电压 通道设定
+
+3 internal dedicated channels
+– One channel for internal reference voltage (V REFINT )
+– One channel for internal temperature sensor (V SENSE )
+– One channel for V BAT monitoring channel (V BAT /4)
+
+
+36  Voltage reference buffer (VREFBUF)
+36.1  Introduction
+The devices embed a voltage reference buffer which can be used as voltage reference for
+ADCs, DACs and also as voltage reference for external components through the VREF+
+pin
+
+Internal reference voltage
+Range 1, 2, 3 1.175 1.215 1.255
+
+
+Reading the temperature
+To use the sensor:
+1. Select the input channels to which the temperature sensor is connected (with the
+appropriate sampling time).
+2.  Program with the appropriate sampling time (refer to electrical characteristics section of
+the device datasheet).
+3.  Set the VSENSESEL bit in the ADC12_CCR register to wake up the temperature
+sensor from power-down mode.
+4.  Start the ADC conversion.
+5.  Read the resulting data in the ADC data register.
+6.  Calculate the actual temperature using the following formula
+
+Temperature in °C ( )
+TS_CAL2_TEMP TS_CAL1_TEMP –
+TS_CAL2 TS_CAL1 –
+------------------------------------------------------------------------------------------------- - TS_DATA TS_CAL1 – ( ) TS_CAL1_TEMP
+
+
+
+I2C 采用模拟的 RT-TREAD 框架   模拟组件里面已经实现了封装
+
+static const struct rt_i2c_bus_device_ops i2c_bit_bus_ops =
+{
+    i2c_bit_xfer,
+    RT_NULL,
+    RT_NULL
+};
+
+rt_err_t rt_i2c_bit_add_bus(struct rt_i2c_bus_device *bus,
+                            const char               *bus_name)
+{
+    bus->ops = &i2c_bit_bus_ops;
+
+    return rt_i2c_bus_device_register(bus, bus_name);
+}

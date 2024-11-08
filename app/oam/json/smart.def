@@ -1,0 +1,43 @@
+/******************************************************************************/
+/*                               ACTION_DEF                                   */
+/******************************************************************************/
+ACTION_DEF("/dev/get"               ,devget_analy)       /* /dev/get    */
+ACTION_DEF("/dev/set"               ,devset_analy)       /* /dev/set    */
+ACTION_DEF("/dev/rpt"               ,wifiset_analy)      /* /wifi/set   */
+
+/******************************************************************************/
+/*                                DEVGET_DEF                                  */
+/******************************************************************************/
+
+DEVSET_DEF("/devinfo"               , smart_devinfo_get)
+DEVSET_DEF("/networks"              , smart_networks_get)
+DEVSET_DEF("/system"                , smart_system_get)
+DEVGET_DEF("/rtinfo"                , smart_rtinfo_get) 
+DEVGET_DEF("/mqtt/get"              , smart_mqtt_get) 
+DEVGET_DEF("/elec/fence"            , smart_elecfence_get) 
+
+/******************************************************************************/
+/*                               DEVSET_DEF                                   */
+/******************************************************************************/
+
+DEVSET_DEF("/heartbeat/set"         , smart_heartbeat_set)
+DEVSET_DEF("/airplane/set"          , smart_airplane_set)
+DEVSET_DEF("/work/mode"             , smart_work_mode)
+DEVSET_DEF("/time/set"              , smart_time_set)
+DEVSET_DEF("/led/set"               , smart_led_set)
+DEVSET_DEF("/gps/set"               , smart_gps_set)
+DEVSET_DEF("/gyroscope/set"         , smart_gyroscope_set)
+DEVSET_DEF("/elec/fence"            , smart_elecfence_set)
+DEVSET_DEF("/ota/start"             , smart_ota_start)
+DEVSET_DEF("/fw/rollback"           , smart_fw_rollback)
+
+DEVSET_DEF("/card/set"              , smart_card_set)
+DEVSET_DEF("/restore"               , smart_restore)
+DEVSET_DEF("/reboot"                , smart_reboot)
+DEVSET_DEF("/mqtt/set"              , smart_mqtt_set)
+DEVSET_DEF("/find/me"               , smart_findme)
+
+
+#undef ACTION_DEF
+#undef DEVGET_DEF
+#undef DEVSET_DEF

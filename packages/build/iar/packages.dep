@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>4</fileVersion>
+    <fileChecksum>471338502</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$TOOLKIT_DIR$\inc\c\signal.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\drivers\i2c_dev.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\libc\libc_fcntl.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\rtservice.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\lwipopts.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\lwip\ip_addr.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\rtdef.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\lwip\sockets.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\libc\libc_stat.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\libc\compilers\common\sys\time.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\libc\libc_dirent.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\rtdebug.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\lwip\errno.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\lwip\ip6_addr.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\ipc\completion.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\libc\libc_signal.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\arch\include\arch\bpstruct.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\dfs\include\dfs_file.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\limits.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\libc\compilers\dlib\unistd.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\libc\libc_errno.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\finsh\finsh.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\lwip\netdb.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\dfs\include\dfs_poll.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\ipc\workqueue.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\rtconfig.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\i2c_tools.o</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\rtm.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\libc\compilers\dlib\fcntl.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\lwip\ip4_addr.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\libc\compilers\dlib\libc.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\lwip\inet.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\drivers\i2c-bit-ops.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\lwip\err.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\lwip\opt.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\iperf.pbi</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\libc\compilers\dlib\sys\unistd.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\finsh\msh.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\ipc\ringblk_buf.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product_stdlib.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\posix\sys\socket.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\time.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\tftp_client.pbi</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\rtdbg.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\libc\libc_fdset.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\tftp_xfer.__cstat.et</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\rtlibc.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\dfs\include\dfs_select.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\optparse.o</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\drivers\watchdog.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\syswatch_test.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Full.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\ipc\waitqueue.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\ipc\dataqueue.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\ipc\poll.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\drivers\i2c.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\libc\libc_ioctl.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\syswatch.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\libcsv.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\i2c_tools.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\optparse.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\syswatch_test.pbi</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\lwip\def.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\telnet.__cstat.et</file>
+            <file>$TOOLKIT_DIR$\inc\c\time32.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\finsh\shell.h</file>
+            <file>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_xfer.c</file>
+            <file>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_xfer.h</file>
+            <file>$PROJ_DIR$\..\..\packages\i2c-tools-latest\src\i2c_utils.cpp</file>
+            <file>$PROJ_DIR$\..\..\packages\i2c-tools-latest\src\i2c_utils.h</file>
+            <file>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_server.c</file>
+            <file>$PROJ_DIR$\..\..\packages\optparse-v1.0.0\optparse.c</file>
+            <file>$PROJ_DIR$\..\..\packages\optparse-v1.0.0\optparse.h</file>
+            <file>$PROJ_DIR$\..\..\packages\i2c-tools-latest\src\i2c_tools.cpp</file>
+            <file>$PROJ_DIR$\..\..\packages\libcsv-v3.0.3\libcsv.h</file>
+            <file>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\iperf\iperf.c</file>
+            <file>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\telnet\telnet.c</file>
+            <file>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp.h</file>
+            <file>$PROJ_DIR$\..\..\packages\libcsv-v3.0.3\libcsv.c</file>
+            <file>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_client.c</file>
+            <file>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_port.c</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\lwip\debug.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\string.h</file>
+            <file>$PROJ_DIR$\..\..\packages\syswatch-latest\inc\syswatch.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\tftp_port.__cstat.et</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\sal_socket\include\dfs_net\sys_select\sys\select.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\inttypes.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\tftp_port.o</file>
+            <file>$PROJ_DIR$\Debug\Exe\packages.out</file>
+            <file>$PROJ_DIR$\Debug\Obj\i2c_utils.o</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\arch\include\arch\cc.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\include\lwip\arch.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\syswatch.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\tftp_server.__cstat.et</file>
+            <file>$PROJ_DIR$\..\..\packages\syswatch-latest\src\syswatch_test.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\telnet.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\i2c_utils.__cstat.et</file>
+            <file>$PROJ_DIR$\..\..\packages\syswatch-latest\src\syswatch.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\tftp_client.o</file>
+            <file>$PROJ_DIR$\..\..\packages\syswatch-latest\inc\syswatch_config.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\tftp_server.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\iperf.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\libcsv.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\telnet.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\syswatch.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\syswatch_test.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\tftp_xfer.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\ctype.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\tftp_client.__cstat.et</file>
+            <file>$PROJ_DIR$\Debug\Obj\tftp_xfer.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\optparse.pbi</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\net\lwip-2.0.2\src\arch\include\arch\epstruct.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\rtthread.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\drivers\pin.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\dfs\include\dfs_fs.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\tftp_server.o</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\dfs\include\dfs.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+            <file>$PROJ_DIR$\..\..\..\libs\iar\Debug\libpackages.a</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\dfs\include\dfs_posix.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdarg.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\utilities\ulog\ulog.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\i2c_utils.pbi</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\include\rthw.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\ipc\ringbuffer.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\drivers\serial.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\tftp_port.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\i2c_tools.__cstat.et</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\ipc\pipe.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\rtdevice.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\iperf.__cstat.et</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\finsh\finsh_api.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\drivers\include\drivers\adc.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\libcsv.o</file>
+            <file>$PROJ_DIR$\..\..\..\os\rt_thread\components\utilities\ulog\ulog_def.h</file>
+        </outputs>
+        <file>
+            <name>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_xfer.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 112</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 115</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 46</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 141 106 108 131 52 60 125 124 40 86 63 9 42 68 41 7 35 4 26 85 95 94 132 119 11 6 15 0 47 8 16 21 2 57 10 45 3 28 140 118 90 19 5 65 30 17 117 13 34 32 12 89 48 71 66 81</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 35 125 85 106 108 68 41 131 52 40 12 94 26 140 30 65 48 16 86 71 60 63 34 124 28 15 57 42 6 95 13 9 89 81 7 5 32 4 118 19 132 128 47 0 21 117 45 141 90 119 11 3 8 2 10 17 66</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\packages\i2c-tools-latest\src\i2c_utils.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 93</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 130</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 100</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 73 119 26 11 6 15 0 106 108 131 52 60 47 8 16 42 125 68 21 2 57 10 45 3 28 140 138 133 14 54 25 53 137 55 39 134 56 1 33 50 120 142 124 40 86 63</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 57 119 125 6 15 26 42 55 138 124 60 108 106 54 134 28 140 128 47 131 52 0 21 68 133 53 56 40 86 11 3 8 2 10 45 16 14 25 137 39 1 33 50 120 142 63 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_server.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 122</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 104</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 97</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 141 106 108 131 52 60 125 16 124 40 86 63 9 42 68 41 7 35 4 26 85 95 94 132 119 11 6 15 0 47 8 21 2 57 10 45 3 28 140 118 90 19 5 65 30 17 117 13 34 32 12 89 48 71 66 81</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 131 10 81 52 106 5 9 108 7 26 30 65 48 16 124 89 125 60 42 35 32 4 119 11 8 6 95 13 86 41 71 40 63 68 34 12 85 90 3 2 45 117 141 94 118 19 132 28 140 128 15 47 0 21 57 17 66</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\packages\optparse-v1.0.0\optparse.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 49</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 116</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 62</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 76</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 76</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\packages\i2c-tools-latest\src\i2c_tools.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 27</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 61</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 136</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 73 119 26 11 6 15 0 106 108 131 52 60 47 8 16 42 125 68 21 2 57 10 45 3 28 140 138 133 14 54 25 53 137 55 39 134 56 1 33 50 120 142 124 40 86 63</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 55 138 6 119 15 26 42 125 57 124 60 108 106 54 134 28 140 128 47 131 52 0 21 68 133 53 56 40 86 11 3 8 2 10 45 16 14 25 137 39 1 33 50 120 142 63 73</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\iperf\iperf.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 105</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 36</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 139</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 119 26 11 6 15 0 106 108 131 52 60 47 8 16 42 125 68 21 2 57 10 45 3 28 140 138 133 14 54 25 53 137 55 39 134 56 1 33 50 120 142 86 63 124 40 141 29 20 37 127 18 123 121 9 41 7 35 4 85 95 94 132 118 90 19 5 65 30 17 117 13 34 32 12 89 48 23 22 113</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 133 127 35 11 141 12 94 60 106 119 108 13 29 125 86 89 15 57 26 42 53 56 85 65 17 32 124 9 3 128 47 131 52 0 21 68 6 54 55 134 138 37 18 123 34 95 118 16 19 132 5 20 41 23 22 28 140 8 2 10 45 14 25 137 39 1 33 50 120 142 63 40 121 7 4 90 30 117 48 113</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\telnet\telnet.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 109</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 99</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 67</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 119 26 11 6 15 0 106 108 131 52 60 47 8 16 42 125 68 21 2 57 10 45 3 28 140 138 133 14 54 25 53 137 55 39 134 56 1 33 50 120 142 41 7 35 4 124 40 85 95 94 132 9 86 63 118 90 19 5 65 30 17 117 13 34 32 12 127 18 123 141 121 24 31 22 113 38 69</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 113 140 119 31 45 33 12 106 30 65 18 124 41 69 11 108 39 35 90 127 22 3 2 16 25 120 85 125 9 42 95 13 123 138 24 38 26 6 28 8 10 14 137 1 50 142 34 117 141 118 128 15 47 131 52 60 0 21 57 68 133 54 53 55 134 56 7 5 32 4 40 94 19 132 86 63 17 121</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\packages\libcsv-v3.0.3\libcsv.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 143</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 107</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 59</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 78 124 106 108 131 52 60 125 40 141</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 106 108 125 78 124 40 141 131 52 60</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_client.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 102</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 43</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 114</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 141 106 108 131 52 60 125 16 124 40 86 63 9 42 68 41 7 35 4 26 85 95 94 132 119 11 6 15 0 47 8 21 2 57 10 45 3 28 140 118 90 19 5 65 30 17 117 13 34 32 12 89 48 71 66 81</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 42 108 10 81 60 125 32 26 9 35 4 106 30 65 48 16 124 89 131 52 7 5 119 11 8 6 95 13 86 41 71 40 63 68 34 12 85 90 3 2 45 117 141 94 118 19 132 28 140 128 15 47 0 21 57 17 66</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_port.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 91</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 135</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 88</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 119 26 11 6 15 0 106 108 131 52 60 47 8 16 42 125 68 21 2 57 10 45 3 28 140 127 18 123 141 124 40 86 63 138 133 14 54 25 53 137 55 39 134 56 1 33 50 120 142 121 81</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 68 52 0 15 128 26 18 119 106 131 108 123 86 3 47 21 125 138 14 50 141 11 60 57 42 6 124 63 137 1 142 127 81 28 140 8 2 10 45 16 40 25 39 33 120 121 133 54 53 55 134 56</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\packages\syswatch-latest\src\syswatch_test.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 111</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 64</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 51</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 124 106 108 131 52 60 125 40 141 119 26 11 6 15 0 47 8 16 42 68 21 2 57 10 45 3 28 140 103 44 129 144</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 125 140 106 6 108 45 119 2 16 141 103 44 40 26 28 8 10 129 124 131 52 60 11 3 128 15 47 0 21 57 42 68 144</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\packages\syswatch-latest\src\syswatch.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 110</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 58</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 96</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 119 26 11 6 15 0 106 108 131 52 60 47 8 16 42 125 68 21 2 57 10 45 3 28 140 138 133 14 54 25 53 137 55 39 134 56 1 33 50 120 142 132 87 103 44 129 144</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 10 1 44 106 137 142 119 138 6 26 8 108 14 50 132 28 140 2 45 16 25 39 33 120 87 11 3 128 15 47 131 52 60 0 21 57 42 125 68 133 54 53 55 134 56 103 129 144</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 92</file>
+                </tool>
+                <tool>
+                    <name>IARCHIVE</name>
+                    <file> 126</file>
+                </tool>
+            </outputs>
+        </file>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_xfer.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\..\packages\i2c-tools-latest\src\i2c_utils.cpp</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_server.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\..\packages\i2c-tools-latest\src\i2c_tools.cpp</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\iperf\iperf.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\telnet\telnet.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_client.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\..\packages\netutils-v1.2.0\tftp\tftp_port.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\..\packages\syswatch-latest\src\syswatch_test.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\..\..\packages\syswatch-latest\src\syswatch.c</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>ILINK</tool>
+        </forcedrebuild>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>ILINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>

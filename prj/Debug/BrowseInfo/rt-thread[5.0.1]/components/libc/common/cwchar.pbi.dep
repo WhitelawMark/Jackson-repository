@@ -1,0 +1,8 @@
+C:\Users\10217\Desktop\coolSrc\prj\Debug\BrowseInfo\rt-thread[5.0.1]\components\libc\common\cwchar.pbi: \
+  C:\Users\10217\Desktop\coolSrc\os\rt-thread5.0.1\components\libc\compilers\common\cwchar.c \
+  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\include\posix\wchar.h \
+  D:\IAR\arm\inc\c\wchar.h D:\IAR\arm\inc\c\ycheck.h \
+  D:\IAR\arm\inc\c\yvals.h D:\IAR\arm\inc\c\DLib_Defaults.h \
+  D:\IAR\arm\inc\c\DLib_Config_Full.h D:\IAR\arm\inc\c\DLib_Product.h \
+  D:\IAR\arm\inc\c\ysizet.h D:\IAR\arm\inc\c\string.h \
+  D:\IAR\arm\inc\c\DLib_Product_string.h

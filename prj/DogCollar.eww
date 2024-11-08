@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspace>
+    <project>
+        <path>$WS_DIR$\..\bsp\bootload\src\prj\bootload.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\DogCollar.ewp</path>
+    </project>
+    <batchBuild />
+</workspace>
