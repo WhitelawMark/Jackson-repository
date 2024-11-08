@@ -106,7 +106,8 @@ int app_init(void)
 int main(void)
 {
     app_init();
-
+    int a =60;
+    printf("Hello world");
 
     return RT_EOK;
 }

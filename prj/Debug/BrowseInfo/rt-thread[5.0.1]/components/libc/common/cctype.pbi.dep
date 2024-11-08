@@ -1,6 +1,6 @@
-C:\Users\10217\Desktop\coolSrc\prj\Debug\BrowseInfo\rt-thread[5.0.1]\components\libc\common\cctype.pbi: \
-  C:\Users\10217\Desktop\coolSrc\os\rt-thread5.0.1\components\libc\compilers\common\cctype.c \
-  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\include\posix\ctype.h \
+D:\Jackson_gihub_repository\coolSrc\prj\Debug\BrowseInfo\rt-thread[5.0.1]\components\libc\common\cctype.pbi: \
+  D:\Jackson_gihub_repository\coolSrc\os\rt-thread5.0.1\components\libc\compilers\common\cctype.c \
+  D:\Jackson_gihub_repository\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\include\posix\ctype.h \
   D:\IAR\arm\inc\c\ctype.h D:\IAR\arm\inc\c\ycheck.h \
   D:\IAR\arm\inc\c\yvals.h D:\IAR\arm\inc\c\DLib_Defaults.h \
   D:\IAR\arm\inc\c\DLib_Config_Full.h D:\IAR\arm\inc\c\DLib_Product.h

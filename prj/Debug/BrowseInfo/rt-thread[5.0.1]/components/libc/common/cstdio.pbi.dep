@@ -1,14 +1,14 @@
-C:\Users\10217\Desktop\coolSrc\prj\Debug\BrowseInfo\rt-thread[5.0.1]\components\libc\common\cstdio.pbi: \
-  C:\Users\10217\Desktop\coolSrc\os\rt-thread5.0.1\components\libc\compilers\common\cstdio.c \
-  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\include\posix\stdio.h \
+D:\Jackson_gihub_repository\coolSrc\prj\Debug\BrowseInfo\rt-thread[5.0.1]\components\libc\common\cstdio.pbi: \
+  D:\Jackson_gihub_repository\coolSrc\os\rt-thread5.0.1\components\libc\compilers\common\cstdio.c \
+  D:\Jackson_gihub_repository\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\include\posix\stdio.h \
   D:\IAR\arm\inc\c\stdio.h D:\IAR\arm\inc\c\ycheck.h \
   D:\IAR\arm\inc\c\yvals.h D:\IAR\arm\inc\c\DLib_Defaults.h \
   D:\IAR\arm\inc\c\DLib_Config_Full.h D:\IAR\arm\inc\c\DLib_Product.h \
   D:\IAR\arm\inc\c\ysizet.h \
-  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\extension\sys\types.h \
+  D:\Jackson_gihub_repository\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\extension\sys\types.h \
   D:\IAR\arm\inc\c\stdint.h D:\IAR\arm\inc\c\stddef.h \
   D:\IAR\arm\inc\c\time.h D:\IAR\arm\inc\c\time64.h \
   D:\IAR\arm\inc\c\stdlib.h D:\IAR\arm\inc\c\DLib_Product_stdlib.h \
   D:\IAR\arm\inc\c\limits.h \
-  C:\Users\10217\Desktop\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\extension\sys\errno.h \
+  D:\Jackson_gihub_repository\coolSrc\prj\..\os\rt-thread5.0.1\components\libc\compilers\common\extension\sys\errno.h \
   D:\IAR\arm\inc\c\errno.h

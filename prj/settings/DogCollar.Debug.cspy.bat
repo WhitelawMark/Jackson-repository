@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"D:\IAR\common\bin\cspybat" -f "C:\Users\10217\Desktop\coolSrc\prj\settings\DogCollar.Debug.general.xcl" --backend -f "C:\Users\10217\Desktop\coolSrc\prj\settings\DogCollar.Debug.driver.xcl" 
+"D:\IAR\common\bin\cspybat" -f "D:\Jackson_gihub_repository\coolSrc\prj\settings\DogCollar.Debug.general.xcl" --backend -f "D:\Jackson_gihub_repository\coolSrc\prj\settings\DogCollar.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"D:\IAR\common\bin\cspybat" -f "C:\Users\10217\Desktop\coolSrc\prj\settings\DogCollar.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\10217\Desktop\coolSrc\prj\settings\DogCollar.Debug.driver.xcl" 
+"D:\IAR\common\bin\cspybat" -f "D:\Jackson_gihub_repository\coolSrc\prj\settings\DogCollar.Debug.general.xcl" "--debug_file=%~1" --backend -f "D:\Jackson_gihub_repository\coolSrc\prj\settings\DogCollar.Debug.driver.xcl" 
 
 @echo off 
 :end

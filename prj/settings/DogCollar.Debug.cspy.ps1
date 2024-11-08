@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "D:\IAR\common\bin\cspybat" -f "C:\Users\10217\Desktop\coolSrc\prj\settings\DogCollar.Debug.general.xcl" --backend -f "C:\Users\10217\Desktop\coolSrc\prj\settings\DogCollar.Debug.driver.xcl" 
+& "D:\IAR\common\bin\cspybat" -f "D:\Jackson_gihub_repository\coolSrc\prj\settings\DogCollar.Debug.general.xcl" --backend -f "D:\Jackson_gihub_repository\coolSrc\prj\settings\DogCollar.Debug.driver.xcl" 
 }
 else
 {
-& "D:\IAR\common\bin\cspybat" -f "C:\Users\10217\Desktop\coolSrc\prj\settings\DogCollar.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\10217\Desktop\coolSrc\prj\settings\DogCollar.Debug.driver.xcl" 
+& "D:\IAR\common\bin\cspybat" -f "D:\Jackson_gihub_repository\coolSrc\prj\settings\DogCollar.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\Jackson_gihub_repository\coolSrc\prj\settings\DogCollar.Debug.driver.xcl" 
 }
