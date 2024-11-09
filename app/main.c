@@ -108,6 +108,7 @@ int main(void)
     app_init();
     int a =60;
     printf("Hello world");
+    printf("run system");
 
     return RT_EOK;
 }
